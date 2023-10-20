@@ -29,6 +29,21 @@ class ViewController: UIViewController {
         return password
     }()
 
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = UIColor(named: "backColor")
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+
+    private lazy var forgetPasswordLable: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Forget your password?"
+        label.font = .boldSystemFont(ofSize: 12)
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -36,8 +51,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        textFieldLogin.layer.cornerRadius = 45
-        textFieldPassword.layer.cornerRadius = 45
+        loginButton.layer.cornerRadius = 20
     }
 
     //MARK: - Setup Views
@@ -46,6 +60,8 @@ class ViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(textFieldLogin)
         view.addSubview(textFieldPassword)
+        view.addSubview(loginButton)
+        view.addSubview(forgetPasswordLable)
     }
 
     private func setupConstraints() {
@@ -66,6 +82,16 @@ class ViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-39)
             make.height.equalTo(40)
             make.width.equalTo(300)
+        }
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(textFieldPassword.snp.bottom).offset(40)
+            make.trailing.equalToSuperview().offset(-55)
+            make.leading.equalToSuperview().offset(55)
+            make.height.equalTo(45)
+        }
+        forgetPasswordLable.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(125)
         }
     }
 }
