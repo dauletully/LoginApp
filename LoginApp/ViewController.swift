@@ -57,11 +57,12 @@ class ViewController: UIViewController {
     }()
 
     private lazy var buttonFacebookConnection: UIButton = {
-        var button = UIButton(type: .system)
-        button.setTitle("facebook", for: .normal)
+        let button = UIButton(type: .system)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 17
         button.backgroundColor = UIColor(named: "facebookColor")
+        button.setTitle("facebook", for: .normal)
+        button.setImage(UIImage(named: "facebookIcon"), for: .normal)
         shadowButton(button: button)
         return button
     }()
@@ -193,3 +194,4 @@ extension UITextField {
         leftViewMode = .always
     }
 }
+
